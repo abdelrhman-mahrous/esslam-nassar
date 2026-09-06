@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>خطوبة إسلام و حبيبة</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Reem+Kufi:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --gold: #d4af37;
+    --gold-light: #f3d98b;
+    --deep: #2b1730;
+    --deep2: #4a1f4e;
+    --pink: #e75480;
+    --cream: #fff8ef;
+  }
+
+  *{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+  }
+
+  html,body{
+    height:100%;
+    width:100%;
+    overflow-x:hidden;
+    font-family: 'Reem Kufi', sans-serif;
+    background: radial-gradient(circle at 50% 0%, var(--deep2) 0%, var(--deep) 55%, #150a17 100%);
+    color: var(--cream);
+  }
+
+  .stage{
+    position:relative;
+    min-height:100vh;
+    width:100%;
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding: 40px 16px;
+  }
+
+  /* confetti falling from top */
+  .confetti{
+    position:fixed;
+    top:-10vh;
+    width:10px;
+    height:16px;
+    opacity:0.9;
+    z-index: 5;
+    border-radius: 2px;
+    animation-name: fall, sway;
+    animation-timing-function: linear, ease-in-out;
+    animation-iteration-count: infinite, infinite;
+  }
+
+  @keyframes fall{
+    0%{ transform: translateY(-10vh) rotate(0deg); }
+    100%{ transform: translateY(110vh) rotate(360deg); }
+  }
+  @keyframes sway{
+    0%,100%{ margin-left: 0px; }
+    50%{ margin-left: 40px; }
+  }
+
+  .card{
+    position:relative;
+    z-index: 10;
+    max-width: 620px;
+    width:100%;
+    background: linear-gradient(180deg, rgba(255,248,239,0.06), rgba(255,248,239,0.02));
+    border: 1px solid rgba(212,175,55,0.55);
+    border-radius: 26px;
+    padding: 44px 30px 36px;
+    text-align:center;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.45), inset 0 0 40px rgba(212,175,55,0.05);
+    backdrop-filter: blur(3px);
+  }
+
+  .frame-corner{
+    position:absolute;
+    width: 46px;
+    height: 46px;
+    border: 2px solid var(--gold);
+    opacity:0.8;
+  }
+  .frame-corner.tl{ top:12px; right:12px; border-left:none; border-bottom:none; border-radius: 12px 0 0 0;}
+  .frame-corner.tr{ top:12px; left:12px; border-right:none; border-bottom:none; border-radius: 0 12px 0 0;}
+  .frame-corner.bl{ bottom:12px; right:12px; border-left:none; border-top:none; border-radius: 0 0 0 12px;}
+  .frame-corner.br{ bottom:12px; left:12px; border-right:none; border-top:none; border-radius: 0 0 12px 0;}
+
+  .rings{
+    font-size: 46px;
+    margin-bottom: 6px;
+    filter: drop-shadow(0 0 14px rgba(212,175,55,0.6));
+  }
+
+  .eyebrow{
+    letter-spacing: 3px;
+    color: var(--gold-light);
+    font-size: 14px;
+    margin-bottom: 14px;
+    opacity: 0.9;
+  }
+
+  .names{
+    font-family: 'Aref Ruqaa', serif;
+    font-weight: 700;
+    font-size: clamp(36px, 8vw, 56px);
+    line-height: 1.3;
+    color: var(--cream);
+    text-shadow: 0 0 22px rgba(212,175,55,0.35);
+    margin-bottom: 6px;
+  }
+
+  .names .amp{
+    color: var(--gold);
+    font-size: 0.6em;
+    margin: 0 8px;
+  }
+
+  .tagline{
+    font-family: 'Aref Ruqaa', serif;
+    font-size: clamp(18px, 3.6vw, 24px);
+    color: var(--gold-light);
+    margin: 18px 0 6px;
+    line-height: 1.9;
+  }
+
+  .divider{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap: 12px;
+    margin: 22px 0;
+    color: var(--gold);
+    opacity: 0.85;
+  }
+  .divider .line{
+    height:1px;
+    width: 70px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+
+  .message{
+    font-size: 16px;
+    line-height: 2;
+    color: rgba(255,248,239,0.9);
+    max-width: 460px;
+    margin: 0 auto 26px;
+  }
+
+  .map-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    text-decoration:none;
+    background: linear-gradient(135deg, var(--gold), #b8860b);
+    color: #2b1730;
+    font-weight: 700;
+    font-size: 16px;
+    padding: 14px 30px;
+    border-radius: 40px;
+    box-shadow: 0 10px 25px rgba(212,175,55,0.35);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .map-btn:hover{
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 14px 32px rgba(212,175,55,0.5);
+  }
+  .map-btn svg{ width:20px; height:20px; }
+
+  .music-note{
+    margin-top: 26px;
+    font-size: 13px;
+    color: rgba(255,248,239,0.55);
+    line-height: 1.8;
+  }
+
+  audio{
+    margin-top: 14px;
+    width: 100%;
+    max-width: 340px;
+    filter: invert(0.85);
+    border-radius: 30px;
+  }
+
+  .hearts-row{
+    margin-top: 22px;
+    font-size: 20px;
+    letter-spacing: 8px;
+    color: var(--pink);
+    opacity: 0.85;
+  }
+
+  @media (max-width:420px){
+    .card{ padding: 34px 18px 28px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="stage">
+  <div class="card">
+    <span class="frame-corner tl"></span>
+    <span class="frame-corner tr"></span>
+    <span class="frame-corner bl"></span>
+    <span class="frame-corner br"></span>
+
+    <div class="rings">💍</div>
+    <div class="eyebrow">بكل الحب والفرحة</div>
+
+    <div class="names">إسلام <span class="amp">&</span> حبيبة</div>
+
+    <div class="tagline">تشرفنا بحضوركم حفل خطوبتنا</div>
+
+    <div class="divider"><span class="line"></span>✦<span class="line"></span></div>
+
+    <p class="message">
+      بقلوب مليانة فرح وسعادة، بندعوكم تشاركونا أجمل لحظة في بداية حكايتنا.
+      وجودكم هو اللي هيكمّل الفرحة ويزوّد النور في يومنا الحلو ❤️
+    </p>
+
+    <a class="map-btn" href="https://maps.google.com/maps?q=29.4048553%2C30.7774456&z=17&hl=ar" target="_blank" rel="noopener noreferrer">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C7.58 2 4 5.58 4 10c0 5.25 7 12 8 12s8-6.75 8-12c0-4.42-3.58-8-8-8zm0 11a3 3 0 110-6 3 3 0 010 6z"/></svg>
+      اضغط هنا لمكان الحفل على الخريطة
+    </a>
+
+    <div class="hearts-row">💛 ✦ 💛</div>
+
+    <div class="music-note">
+      🎵 "يا دبلة الخطوبة" ما قدرتش أحطها هنا كملف صوتي لأنها أغنية محمية بحقوق الملكية ومش معايا مصدر مرخّص ليها.
+      لو حابب الأغنية تشتغل فعليًا في الصفحة، حمّل ملف الأغنية بصيغة mp3 وسمّيه <b>song.mp3</b> وحطه جنب ملف الـ HTML، والبلاير هيشغّلها تلقائي.
+      <audio controls loop>
+        <source src="song.mp3" type="audio/mpeg">
+        المتصفح مش بيدعم تشغيل الصوت.
+      </audio>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  // Generate falling confetti (celebration effect)
+  const colors = ['#d4af37', '#f3d98b', '#e75480', '#ffffff', '#c9a0dc'];
+  const stage = document.querySelector('.stage');
+  const total = 60;
+
+  for (let i = 0; i < total; i++) {
+    const piece = document.createElement('div');
+    piece.className = 'confetti';
+    const color = colors[Math.floor(Math.random() * colors.length)];
+    piece.style.background = color;
+    piece.style.left = Math.random() * 100 + 'vw';
+    const fallDuration = 5 + Math.random() * 6;
+    const swayDuration = 2 + Math.random() * 3;
+    piece.style.animationDuration = fallDuration + 's, ' + swayDuration + 's';
+    piece.style.animationDelay = (Math.random() * 8) + 's, 0s';
+    // random shapes: some round, some rectangular
+    if (Math.random() > 0.5) {
+      piece.style.borderRadius = '50%';
+      piece.style.width = '9px';
+      piece.style.height = '9px';
+    }
+    document.body.appendChild(piece);
+  }
+</script>
+
+</body>
+</html>
